@@ -154,7 +154,7 @@ void setup () {
 
 void update () {
 
-  frame.setTitle(str(frameRate));
+  surface.setTitle(str(frameRate));
   
   //t = t + 10;
   x = 0.001;

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<yellow_purple_magenta>
+
+<value id="r_a">0.731</value>
+<value id="r_b">0.358</value>
+<value id="r_c">1.077</value>
+<value id="r_d">0.965</value>
+
+<value id="g_a">1.098</value>
+<value id="g_b">1.090</value>
+<value id="g_c">0.360</value>
+<value id="g_d">2.265</value>
+
+<value id="b_a">0.192</value>
+<value id="b_b">0.657</value>
+<value id="b_c">0.328</value>
+<value id="b_d">0.837 </value>
+
+</yellow_purple_magenta>
