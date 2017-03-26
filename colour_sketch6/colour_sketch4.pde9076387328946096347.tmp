@@ -1,4 +1,4 @@
-import controlP5.*;
+import controlP5.*; //<>//
 ControlP5 cp5;
 
 XML xml_0;
@@ -129,7 +129,8 @@ void draw () {
   //rect(0, 0, width, height);  
 
   update();
-  
+  //XMLTest();
+
   // VECTOR ANNOTATION
   mtthwjhnsn = createFont("Ashbury", 30, true);
   fill(#CFCFD3);
@@ -143,62 +144,64 @@ void draw () {
 
 public void PRESETS() {
 
-      
-      if (cp5.getController("PRESETS").getValue() == 0) {
-        xmlChooser = xml_0;
+       if (cp5.getController("PRESETS").getValue() == 0) {
+      println("ZERO");
       }
       if (cp5.getController("PRESETS").getValue() == 1) {
-        xmlChooser = xml_1;
+        xmlChooser = xml_0;
       }
       if (cp5.getController("PRESETS").getValue() == 2) {
-        xmlChooser = xml_2;
+        xmlChooser = xml_1;
       }
       if (cp5.getController("PRESETS").getValue() == 3) {
-        xmlChooser = xml_3;
+        xmlChooser = xml_2;
       }
       if (cp5.getController("PRESETS").getValue() == 4) {
-        xmlChooser = xml_4;
+        xmlChooser = xml_3;
       }
       if (cp5.getController("PRESETS").getValue() == 5) {
-        xmlChooser = xml_5;
+        xmlChooser = xml_4;
       }
       if (cp5.getController("PRESETS").getValue() == 6) {
-        xmlChooser = xml_6;
+        xmlChooser = xml_5;
       }
       if (cp5.getController("PRESETS").getValue() == 7) {
-        xmlChooser = xml_7;
+        xmlChooser = xml_6;
       }
       if (cp5.getController("PRESETS").getValue() == 8) {
-        xmlChooser = xml_8;
+        xmlChooser = xml_7;
       }
       if (cp5.getController("PRESETS").getValue() == 9) {
-        xmlChooser = xml_9;
+        xmlChooser = xml_8;
       }
       if (cp5.getController("PRESETS").getValue() == 10) {
-        xmlChooser = xml_10;
+        xmlChooser = xml_9;
       }
       if (cp5.getController("PRESETS").getValue() == 11) {
-        xmlChooser = xml_11;
+        xmlChooser = xml_10;
       }
       if (cp5.getController("PRESETS").getValue() == 12) {
-        xmlChooser = xml_12;
+        xmlChooser = xml_11;
       }
       if (cp5.getController("PRESETS").getValue() == 13) {
-        xmlChooser = xml_13;
+        xmlChooser = xml_12;
       }
       if (cp5.getController("PRESETS").getValue() == 14) {
-        xmlChooser = xml_14;
+        xmlChooser = xml_13;
       }
       if (cp5.getController("PRESETS").getValue() == 15) {
-        xmlChooser = xml_15;
+        xmlChooser = xml_14;
       }
       if (cp5.getController("PRESETS").getValue() == 16) {
-        xmlChooser = xml_16;
+        xmlChooser = xml_15;
       }
       if (cp5.getController("PRESETS").getValue() == 17) {
+        xmlChooser = xml_16;
+      }
+      if (cp5.getController("PRESETS").getValue() == 18) {
         xmlChooser = xml_17;
       }
-            if (cp5.getController("PRESETS").getValue() == 18) {
+            if (cp5.getController("PRESETS").getValue() == 19) {
         xmlChooser = xml_18;
       }
   
@@ -577,26 +580,27 @@ void createDropDownList() {
     ;
 
 
-  // Here we add our elements to the drop down list
-  ddl.addItem("blue_cyan", 0);
-  ddl.addItem("blue_magenta_orange", 1);
-  ddl.addItem("blue_white_red", 2);
-  ddl.addItem("cyan_magenta", 3);
-  ddl.addItem("green_blue_orange", 4);
-  ddl.addItem("green_cyan", 5);
-  ddl.addItem("green_magenta", 6);
-  ddl.addItem("green_red", 7);
-  ddl.addItem("magenta_green", 8);
-  ddl.addItem("orange_blue", 9);
-  ddl.addItem("orange_magenta_blue", 10);
-  ddl.addItem("rainbow1", 11);
-  ddl.addItem("rainbow2", 12);
-  ddl.addItem("rainbow3", 13);
-  ddl.addItem("rainbow4", 14);
-  ddl.addItem("red_blue", 15);
-  ddl.addItem("yellow_green_blue", 16);
-  ddl.addItem("yellow_magenta_cyan", 17);
-  ddl.addItem("yellow_purple_magenta", 18);
+  // Here we add our elements to the drop down list          
+  ddl.addItem("CUSTOM", 0);
+  ddl.addItem("blue_cyan", 1);
+  ddl.addItem("blue_magenta_orange", 2);
+  ddl.addItem("blue_white_red", 3);
+  ddl.addItem("cyan_magenta", 4);
+  ddl.addItem("green_blue_orange", 5);
+  ddl.addItem("green_cyan", 6);
+  ddl.addItem("green_magenta", 7);
+  ddl.addItem("green_red", 8);
+  ddl.addItem("magenta_green", 9);
+  ddl.addItem("orange_blue", 10);
+  ddl.addItem("orange_magenta_blue", 11);
+  ddl.addItem("rainbow1", 12);
+  ddl.addItem("rainbow2", 13);
+  ddl.addItem("rainbow3", 14);
+  ddl.addItem("rainbow4", 15);
+  ddl.addItem("red_blue", 16);
+  ddl.addItem("yellow_green_blue", 17);
+  ddl.addItem("yellow_magenta_cyan", 18);
+  ddl.addItem("yellow_purple_magenta", 19);
 
 }
 

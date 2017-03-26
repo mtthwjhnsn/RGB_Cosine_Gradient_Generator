@@ -1,6 +1,8 @@
 import controlP5.*;
 ControlP5 cp5;
 
+float counter;
+
 XML xml_0;
 XML xml_1;
 XML xml_2;
@@ -50,6 +52,7 @@ XML xml;
 
 void setup () {
 
+  counter = 0;
   //fullScreen(1);
   size (1920, 1080, P2D);
   background(0);
@@ -127,7 +130,7 @@ void draw () {
   image(myImg, 0, 0, width, height);
   //fill(#2F3852);
   //rect(0, 0, width, height);  
-
+  OSCILLATE();
   update();
   
   // VECTOR ANNOTATION
@@ -198,9 +201,23 @@ public void PRESETS() {
       if (cp5.getController("PRESETS").getValue() == 17) {
         xmlChooser = xml_17;
       }
-            if (cp5.getController("PRESETS").getValue() == 18) {
+      if (cp5.getController("PRESETS").getValue() == 18) {
         xmlChooser = xml_18;
       }
+      //if (cp5.getController("PRESETS").getValue() == 19) {
+      //  xmlChooser = xml_19;
+      //}
+  
+  
+  
+  
+  //XML[] children = xmlChooser.getChildren("value");
+
+  //XML firstChild = xml.getChild("animal");
+  //xml.removeChild(firstChild);
+  //xml.setFloat()
+  //saveXML(xml, "CUSTOM.xml");
+  //    }
   
   XML[] children = xmlChooser.getChildren("value");
 
@@ -281,6 +298,14 @@ public void ALL() {
   cp5.getController("b_b").setValue(random(-1, 1));
   cp5.getController("b_c").setValue(random(-1, 1));
   cp5.getController("b_d").setValue(random(-1, 1));
+}
+
+public void OSCILLATE() {
+  counter = counter + 0.01;
+  cp5.getController("r_d").setValue(1*sin(counter*1));
+  cp5.getController("g_d").setValue(1*sin(counter*1));
+  cp5.getController("b_d").setValue(1*sin(counter*1));
+  
 }
 
 //GUI
@@ -597,6 +622,9 @@ void createDropDownList() {
   ddl.addItem("yellow_green_blue", 16);
   ddl.addItem("yellow_magenta_cyan", 17);
   ddl.addItem("yellow_purple_magenta", 18);
+  ddl.addItem("custom1", 19);
+  ddl.addItem("custom2", 20);
+  ddl.addItem("custom3", 21);
 
 }
 
@@ -683,6 +711,15 @@ void createButtons() {
   // Here we add a Button switch
   cp5.addButton("ALL")
     .setPosition(0, 190)
+    .setColorBackground(color(100))
+    .setSize(width/24, height/24)
+
+    .setFont(createFont(font, font_size))
+    .setGroup(buttons);
+  ;
+  
+    cp5.addButton("OSCILLATE")
+    .setPosition(0, 290)
     .setColorBackground(color(100))
     .setSize(width/24, height/24)
 

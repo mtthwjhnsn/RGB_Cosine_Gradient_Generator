@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<magenta_green>
+
+<value id="r_a"> 0.590</value>
+<value id="r_b">0.410</value>
+<value id="r_c">0.940</value>
+<value id="r_d">-4.242</value>
+
+<value id="g_a">0.811</value>
+<value id="g_b">0.392</value>
+<value id="g_c">0.548</value>
+<value id="g_d">-6.611</value>
+
+<value id="b_a">0.120</value>
+<value id="b_b">0.590</value>
+<value id="b_c">0.278</value>
+<value id="b_d">-4.045</value>
+
+</magenta_green>
