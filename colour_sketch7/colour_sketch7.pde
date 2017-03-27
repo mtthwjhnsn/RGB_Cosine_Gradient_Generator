@@ -1,6 +1,8 @@
 import controlP5.*;
 ControlP5 cp5;
 
+float function; // oscillator1 class
+
 float counter;
 
 float value;
@@ -137,11 +139,15 @@ void update () {
 void draw () {
   image(myImg, 0, 0, width, height);
   update();
-  oscillator1();
-  oscillator2();
-  //harmonicMotion();
-
-
+  
+  //oscillator 1 class
+  Osc1 wave1 = new Osc1(2*width/24, height/2-height/12, height/24, 1);
+  counter = counter + 0.1;
+  wave1.update();
+  
+  Osc2 wave2 = new Osc2(5*width/24, height/2-height/12, height/24, 10);
+  counter = counter + 0.1;
+  wave2.update();
 
   // VECTOR ANNOTATION
   mtthwjhnsn = createFont("Ashbury", 30, true);
@@ -152,52 +158,13 @@ void draw () {
 }
 
 
-//Oscillate
-
-//void harmonicMotion() {
-
+//void Oscillate1() {
 //  float instances = 100;
 //  counter = counter + 0.01;
-//  float x = width/4 + 20 + instances/2;
-//  float y = height/2 + 50*sin(counter + (instances/2)*0.1);
-
-//  float value = map(y, -50, 50, 0, 100);
-//  println(value);
-//  for (float i = 0; i < instances; i++) {
-
-//    float i_2 = i + 1;
-//    float _x = width/4 + 20 + i;
-//    float _y = height/2 + 50*sin(counter + (i)*0.1);
-
-//    float _x2 = width/4 + 20 + (i_2);
-//    float _y2 = height/2 + 50*sin(counter + (i_2)*0.1);
-
-//    stroke(255);
-//    strokeWeight(2);
-//    line(_x, _y, _x2, _y2);  
-//  }
-//  rectMode(CENTER);
-//  fill(255);
-//  noStroke();
-//  rect(x, y, 10, 10); // selecting rect
-  
-  
-  
-//  //line(x, y, x, height/2-50); // downwardline
-//  //float instances = 100;
-//  //counter = counter + 0.01;
-//  //cp5.getController("r_d").setValue(height/2 + 50*sin(counter + (instances/2)*0.1));
-//  //cp5.getController("g_d").setValue(height/2 + 50*sin(counter + (instances/2)*0.1));
-//  //cp5.getController("b_d").setValue(height/2 + 50*sin(counter + (instances/2)*0.1));
+//  cp5.getController("r_d").setValue(sin(counter + (instances/2)*0.1));
+//  cp5.getController("g_d").setValue(sin(counter + (instances/2)*0.1));
+//  cp5.getController("b_d").setValue(sin(counter + (instances/2)*0.1));
 //}
-
-void Oscillate1() {
-  float instances = 100;
-  counter = counter + 0.01;
-  cp5.getController("r_d").setValue(sin(counter + (instances/2)*0.1));
-  cp5.getController("g_d").setValue(sin(counter + (instances/2)*0.1));
-  cp5.getController("b_d").setValue(sin(counter + (instances/2)*0.1));
-}
 
 ///////////////////
 public void PRESETS() {
