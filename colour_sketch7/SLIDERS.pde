@@ -1,9 +1,9 @@
-  void createSliders() {
-  int font_size = 30;
-  
+void createSliders() {
+  int font_size = 18;
+
   int sl_height_1 = 0;
-  int sl_height_2 = height/12;
-  int sl_height_3 = 2*height/12;
+  int sl_height_2 = height/24;
+  int sl_height_3 = 2*height/24;
 
   int sl_width_a = 0;
   int sl_width_b = width/8;
@@ -25,11 +25,11 @@
 
   SliderLabel = cp5.addTextlabel("sliderLabel")
     .hide()
-    //.setText("Background Colours")
-    //.setSize(width/4, height/8)
-    //.setPosition(0, 5)
-    //.setColorValue(0xffffff00)
-    //  .setFont(createFont("Georgia", 100))
+    .setText("Background Colours")
+    .setSize(width/4, height/8)
+    .setPosition(0, 5)
+    .setColorValue(0xffffff00)
+    .setFont(createFont("Georgia", 100))
     .setGroup(sliders);
 
   // Next we add horizontal sliders, the value of this slider will be linked

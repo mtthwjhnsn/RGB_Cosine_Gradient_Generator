@@ -1,15 +1,40 @@
+XML xml_0;
+XML xml_1;
+XML xml_2;
+XML xml_3;
+XML xml_4;
+XML xml_5;
+XML xml_6;
+XML xml_7;
+XML xml_8;
+XML xml_9;
+XML xml_10;
+XML xml_11;
+XML xml_12;
+XML xml_13;
+XML xml_14;
+XML xml_15;
+XML xml_16;
+XML xml_17;
+XML xml_18;
+XML xml_19;
+XML xml_20;
+XML xml_21;
+
+XML xmlChooser;
+
 void createDropDownList() {
 
-   int font_size = 30;
-  
+  int font_size = 18;
+
   // Firstly, we create a group that out drop down list will bind to. 
   Group dropDownList = cp5.addGroup("OPTIONS")
-    //.setColorValue(color(255))
+    .setColorValue(color(255))
     .setPosition(100, height/2 + height/8)
     .setBackgroundHeight(height/4)
     .setWidth(0)
-    //.setHeight(40)
-    //.setFont(createFont(font, font_size))
+    .setHeight(40)
+    .setFont(createFont(font, font_size))
     ;
 
   // Secondly, we will write a label on screen to notify the user what 
@@ -63,5 +88,113 @@ void createDropDownList() {
   ddl.addItem("custom1", 19);
   ddl.addItem("custom2", 20);
   ddl.addItem("custom3", 21);
+}
 
+public void SAVE() {
+  
+ //void setup() {
+  //xml = loadXML("mammals.xml");
+  XML firstChild = xml.getChild("animal");
+  xml.removeChild(firstChild);
+  saveXML(xml, "subset.xml");
+}
+
+// Sketch saves the following to a file called "subset.xml":
+// <?xml version="1.0"?>
+// <mammals>
+//   <animal id="1" species="Panthera pardus">Leopard</animal>
+//   <animal id="2" species="Equus zebra">Zebra</animal>
+// </mammals>
+  
+  
+}
+
+
+///////////////////
+public void PRESETS() {
+
+  if (cp5.getController("PRESETS").getValue() == 0) {
+    xmlChooser = xml_0;
+  }
+  if (cp5.getController("PRESETS").getValue() == 1) {
+    xmlChooser = xml_1;
+  }
+  if (cp5.getController("PRESETS").getValue() == 2) {
+    xmlChooser = xml_2;
+  }
+  if (cp5.getController("PRESETS").getValue() == 3) {
+    xmlChooser = xml_3;
+  }
+  if (cp5.getController("PRESETS").getValue() == 4) {
+    xmlChooser = xml_4;
+  }
+  if (cp5.getController("PRESETS").getValue() == 5) {
+    xmlChooser = xml_5;
+  }
+  if (cp5.getController("PRESETS").getValue() == 6) {
+    xmlChooser = xml_6;
+  }
+  if (cp5.getController("PRESETS").getValue() == 7) {
+    xmlChooser = xml_7;
+  }
+  if (cp5.getController("PRESETS").getValue() == 8) {
+    xmlChooser = xml_8;
+  }
+  if (cp5.getController("PRESETS").getValue() == 9) {
+    xmlChooser = xml_9;
+  }
+  if (cp5.getController("PRESETS").getValue() == 10) {
+    xmlChooser = xml_10;
+  }
+  if (cp5.getController("PRESETS").getValue() == 11) {
+    xmlChooser = xml_11;
+  }
+  if (cp5.getController("PRESETS").getValue() == 12) {
+    xmlChooser = xml_12;
+  }
+  if (cp5.getController("PRESETS").getValue() == 13) {
+    xmlChooser = xml_13;
+  }
+  if (cp5.getController("PRESETS").getValue() == 14) {
+    xmlChooser = xml_14;
+  }
+  if (cp5.getController("PRESETS").getValue() == 15) {
+    xmlChooser = xml_15;
+  }
+  if (cp5.getController("PRESETS").getValue() == 16) {
+    xmlChooser = xml_16;
+  }
+  if (cp5.getController("PRESETS").getValue() == 17) {
+    xmlChooser = xml_17;
+  }
+  if (cp5.getController("PRESETS").getValue() == 18) {
+    xmlChooser = xml_18;
+  }
+    if (cp5.getController("PRESETS").getValue() == 19) {
+    xmlChooser = xml_19;
+  }
+    if (cp5.getController("PRESETS").getValue() == 20) {
+    xmlChooser = xml_20;
+  }
+    if (cp5.getController("PRESETS").getValue() == 21) {
+    xmlChooser = xml_21;
+  }
+    if (cp5.getController("PRESETS").getValue() == 22) {
+    xmlChooser = xml_21;
+  }
+
+  XML[] children = xmlChooser.getChildren("value");
+
+  r_a = children[0].getFloatContent();
+  r_b = children[1].getFloatContent();
+  r_c = children[2].getFloatContent();
+  r_d = children[3].getFloatContent();
+  g_a = children[4].getFloatContent();
+  g_b = children[5].getFloatContent();
+  g_c = children[6].getFloatContent();
+  g_d = children[7].getFloatContent();
+  b_a = children[8].getFloatContent();
+  b_b = children[9].getFloatContent();
+  b_c = children[10].getFloatContent();
+  b_d = children[11].getFloatContent();
 }

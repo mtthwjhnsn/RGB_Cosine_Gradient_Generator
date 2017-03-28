@@ -1,8 +1,7 @@
 void createButtons() {
-  
 
-   int font_size = 30;
-  
+  int font_size = 18;
+
   // Firstly, we create a group that out buttons will bind to. 
   Group buttons = cp5.addGroup("buttons")
     .setPosition(width/14 * 11, height/2 + height/8)
@@ -87,13 +86,148 @@ void createButtons() {
     .setFont(createFont(font, font_size))
     .setGroup(buttons);
   ;
-  
-    //cp5.addToggle("OSCILLATE")
-    //.setPosition(0, 290)
-    //.setColorBackground(color(100))
-    //.setSize(width/24, height/24)
 
-    //.setFont(createFont(font, font_size))
-    //.setGroup(buttons);
+  cp5.addToggle("SIN_ON")
+    .setPosition(0, 250)
+    .setColorBackground(color(100))
+    .setSize(width/48, height/48)
+    .setFont(createFont(font, font_size))
+    .setGroup(buttons);
   ;
+
+  cp5.addToggle("SIN_OFF")
+    .setPosition(100, 250)
+    .setColorBackground(color(100))
+    .setSize(width/48, height/48)
+    .setFont(createFont(font, font_size))
+    .setGroup(buttons);
+  ;
+
+  cp5.addToggle("SAW_ON")
+    .setPosition(0, 310)
+    .setColorBackground(color(100))
+    .setSize(width/48, height/48)
+    .setFont(createFont(font, font_size))
+    .setGroup(buttons);
+  ;
+
+  cp5.addToggle("SAW_OFF")
+    .setPosition(100, 310)
+    .setColorBackground(color(100))
+    .setSize(width/48, height/48)
+    .setFont(createFont(font, font_size))
+    .setGroup(buttons);
+  ;
+
+  cp5.addButton("SAVE")
+    .setPosition(300, 310)
+    .setColorBackground(color(100, 20, 20))
+    .setSize(width/48, height/48)
+    .setFont(createFont(font, font_size))
+    .setGroup(buttons);
+  ;
+}
+
+public void SAVE() {
+  
+  
+}
+
+public void SIN_ON() {
+
+  toggle = true;//oscillator 1 class
+  Osc1 wave1 = new Osc1(2*width/24, height/2, height/24, 1);
+  counter = counter + 0.1;
+  wave1.update();
+  value = map(height/2+function, height/2-height/24, height/2+height/24, -1, 1);
+  cp5.getController("r_c").setValue(value);
+  cp5.getController("g_c").setValue(value);
+  cp5.getController("b_c").setValue(value);
+}
+
+public void SIN_OFF() {
+  toggle = false;
+}
+
+public void SAW_ON() {
+
+  toggle2 = true;//oscillator 1 class
+
+  Osc2 wave2 = new Osc2(7*width/24, height/2, height/24, 20);
+  counter = counter + 0.1;
+  wave2.update();
+  value = map(function, -height/24, height/24, 0, 2); 
+  value = (value%2)-1;
+  cp5.getController("r_c").setValue(value);
+  cp5.getController("g_c").setValue(value);
+  cp5.getController("b_c").setValue(value);
+}
+
+public void SAW_OFF() {
+  toggle2 = false;
+}
+
+//BUTTON FUNCTIONS
+public void RED() {
+  cp5.getController("r_a").setValue(random(-1, 1));
+  cp5.getController("r_b").setValue(random(-1, 1));
+  cp5.getController("r_c").setValue(random(-1, 1));
+  cp5.getController("r_d").setValue(random(-1, 1));
+}
+
+
+public void GREEN() {
+  cp5.getController("g_a").setValue(random(-1, 1));
+  cp5.getController("g_b").setValue(random(-1, 1));
+  cp5.getController("g_c").setValue(random(-1, 1));
+  cp5.getController("g_d").setValue(random(-1, 1));
+}
+
+public void BLUE() {
+  cp5.getController("b_a").setValue(random(-1, 1));
+  cp5.getController("b_b").setValue(random(-1, 1));
+  cp5.getController("b_c").setValue(random(-1, 1));
+  cp5.getController("b_d").setValue(random(-1, 1));
+}
+
+public void A() {
+  cp5.getController("r_a").setValue(random(-1, 1));
+  cp5.getController("g_a").setValue(random(-1, 1));
+  cp5.getController("b_a").setValue(random(-1, 1));
+}
+
+public void B() {
+  cp5.getController("r_b").setValue(random(-1, 1));
+  cp5.getController("g_b").setValue(random(-1, 1));
+  cp5.getController("b_b").setValue(random(-1, 1));
+}
+
+public void C() {
+  cp5.getController("r_c").setValue(random(-1, 1));
+  cp5.getController("g_c").setValue(random(-1, 1));
+  cp5.getController("b_c").setValue(random(-1, 1));
+}
+
+public void D() {
+  cp5.getController("r_d").setValue(random(-1, 1));
+  cp5.getController("g_d").setValue(random(-1, 1));
+  cp5.getController("b_d").setValue(random(-1, 1));
+}
+
+public void ALL() {
+
+  cp5.getController("r_a").setValue(random(-1, 1));
+  cp5.getController("r_b").setValue(random(-1, 1));
+  cp5.getController("r_c").setValue(random(-1, 1));
+  cp5.getController("r_d").setValue(random(-1, 1));
+
+  cp5.getController("g_a").setValue(random(-1, 1));
+  cp5.getController("g_b").setValue(random(-1, 1));
+  cp5.getController("g_c").setValue(random(-1, 1));
+  cp5.getController("g_d").setValue(random(-1, 1));
+
+  cp5.getController("b_a").setValue(random(-1, 1));
+  cp5.getController("b_b").setValue(random(-1, 1));
+  cp5.getController("b_c").setValue(random(-1, 1));
+  cp5.getController("b_d").setValue(random(-1, 1));
 }
