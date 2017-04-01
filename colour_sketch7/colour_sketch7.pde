@@ -1,28 +1,21 @@
 import controlP5.*;
 ControlP5 cp5;
 
+ArrayList<SinWave> sins = new ArrayList<SinWave>();
+
 float function; // oscillator1 class
 
 float counter;
 
-boolean toggle;
-boolean toggle2;
+boolean toggle, toggle2;
 
-float value;
-float value2;
+boolean  change_a, change_b, change_c, change_d;
 
-float  r_a;
-float  r_b;
-float  r_c;
-float  r_d;
-float  g_a;
-float  g_b;
-float  g_c;
-float  g_d;
-float  b_a;
-float  b_b;
-float  b_c;
-float  b_d;
+int _a, _b, _c, _d, reset_a, reset_b, reset_c, reset_d;
+
+float value, value1, value2, value3;
+
+float  r_a, r_b, r_c, r_d, g_a, g_b, g_c, g_d, b_a, b_b, b_c, b_d;
 
 float x;
 
@@ -33,6 +26,7 @@ String font = "HelveticaNeueLTPro-Lt-48";
 PImage myImg;
 
 XML xml;
+
 
 //SETUP/////////////////////////////////////////////////////////////////////
 
@@ -46,7 +40,11 @@ void setup () {
   counter = 0;
   toggle = false;
   toggle2 = false;
-  //fullScreen(1);
+
+  _a = 0;
+  _b = 0;
+  _c = 0;
+  _d = 0;
 
   xml_0 = loadXML("blue_cyan.xml");
   xml_1 = loadXML("blue_magenta_orange.xml");
@@ -68,21 +66,18 @@ void setup () {
   xml_17 = loadXML("yellow_magenta_cyan.xml");
   xml_18 = loadXML("yellow_purple_magenta.xml");
 
-  x = 0;
-
-  r_a = 0.5;
-  r_b = 0.5;
-  r_c = 0.25;
+  x = 0; 
+  r_a = 0.5; 
+  r_b = 0.5; 
+  r_c = 0.25; 
   r_d = 0.5;
-
-  g_a = 0.5;
-  g_b = 0.5;
-  g_c = 0.25;
+  g_a = 0.5; 
+  g_b = 0.5; 
+  g_c = 0.25; 
   g_d = 0.5;
-
-  b_a = 0.5;
-  b_b = 0.5;
-  b_c = 0.25;
+  b_a = 0.5; 
+  b_b = 0.5; 
+  b_c = 0.25; 
   b_d = 0.5;
 
   myImg = loadImage("vhs2.jpg");
@@ -121,7 +116,6 @@ void draw () {
   if (toggle == true) {
     SIN_ON();
     toggle2 = false;
-    
   } else if (toggle2 == true) {
     SAW_ON();
     toggle = false;
@@ -134,3 +128,11 @@ void draw () {
   textAlign(CENTER, CENTER);
   //text("[" + str(r_a) + ", " + str(r_b) + ", " + str(r_c) + ", " + str(r_d) + "] [" + str(g_a) + ", " + str(g_b) + ", " + str(g_c) + ", " + str(g_d) + "] [" + str(b_a) + ", " + str(b_b) + ", " + str(b_c) + ", " + str(b_d) + "]", width/2, height/2);
 }
+
+//void mousePressed() {
+//  if (toggle == true) {
+//    sins.add(new SinWave(2*width/24, height/2, height/24, 1));
+//  } else {
+//    sins.clear();
+//  }
+//}

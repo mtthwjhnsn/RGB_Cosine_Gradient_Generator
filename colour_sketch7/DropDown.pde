@@ -20,6 +20,7 @@ XML xml_18;
 XML xml_19;
 XML xml_20;
 XML xml_21;
+XML xml_22;
 
 XML xmlChooser;
 
@@ -90,14 +91,7 @@ void createDropDownList() {
   ddl.addItem("custom3", 21);
 }
 
-public void SAVE() {
-  
- //void setup() {
-  //xml = loadXML("mammals.xml");
-  XML firstChild = xml.getChild("animal");
-  xml.removeChild(firstChild);
-  saveXML(xml, "subset.xml");
-}
+
 
 // Sketch saves the following to a file called "subset.xml":
 // <?xml version="1.0"?>
@@ -105,9 +99,7 @@ public void SAVE() {
 //   <animal id="1" species="Panthera pardus">Leopard</animal>
 //   <animal id="2" species="Equus zebra">Zebra</animal>
 // </mammals>
-  
-  
-}
+//}
 
 
 ///////////////////
@@ -180,7 +172,7 @@ public void PRESETS() {
     xmlChooser = xml_21;
   }
     if (cp5.getController("PRESETS").getValue() == 22) {
-    xmlChooser = xml_21;
+    xmlChooser = xml_22;
   }
 
   XML[] children = xmlChooser.getChildren("value");

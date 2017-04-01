@@ -5,9 +5,14 @@ void createButtons() {
   // Firstly, we create a group that out buttons will bind to. 
   Group buttons = cp5.addGroup("buttons")
     .setPosition(width/14 * 11, height/2 + height/8)
-    .setBackgroundHeight(0)
-    .setWidth(0)
+    .setBackgroundHeight(height/2)
+    .setWidth(160)
+    .setColorBackground(color(255))
+
     ;
+
+
+  ;
 
   // Secondly, we will write a label on screen to notify the user what 
   // the sliders control.
@@ -119,30 +124,107 @@ void createButtons() {
     .setGroup(buttons);
   ;
 
-  cp5.addButton("SAVE")
-    .setPosition(300, 310)
-    .setColorBackground(color(100, 20, 20))
+  cp5.addToggle("_A")
+    .setPosition(150+width/48, 250)
+    .setColorBackground(color(100))
+    .setSize(width/48, height/48)
+    .setFont(createFont(font, font_size))
+    .setGroup(buttons);
+  ;
+
+  cp5.addToggle("_B")
+    .setPosition(160+2*width/48, 250)
+    .setColorBackground(color(100))
+    .setSize(width/48, height/48)
+    .setFont(createFont(font, font_size))
+    .setGroup(buttons);
+  ;
+
+  cp5.addToggle("_C")
+    .setPosition(170+3*width/48, 250)
+    .setColorBackground(color(100))
+    .setSize(width/48, height/48)
+    .setFont(createFont(font, font_size))
+    .setGroup(buttons);
+  ;
+
+  cp5.addToggle("_D")
+    .setPosition(180+4*width/48, 250)
+    .setColorBackground(color(100))
     .setSize(width/48, height/48)
     .setFont(createFont(font, font_size))
     .setGroup(buttons);
   ;
 }
 
-public void SAVE() {
-  
-  
+void change() {
+
+  if (_a > 1) _a = 0;
+  if (_b > 1) _b = 0;
+  if (_c > 1) _c = 0;
+  if (_d > 1) _d = 0;
+  if (_a == 0) change_a = false;
+  if (_a == 1) change_a = true;
+  if (_b == 0) change_b = false;
+  if (_b == 1) change_b = true;
+  if (_c == 0) change_c = false;
+  if (_c == 1) change_c = true;
+  if (_d == 0) change_d = false;
+  if (_d == 1) change_d = true;
 }
 
 public void SIN_ON() {
+  change();
 
+  println(str(change_a) + "____" + str(change_b) + "____" + str(_c) + "____" + str(_d)); 
   toggle = true;//oscillator 1 class
-  Osc1 wave1 = new Osc1(2*width/24, height/2, height/24, 1);
+  SinWave sins = new SinWave(12*width/24, height/2, height/24, 1);
   counter = counter + 0.1;
-  wave1.update();
-  value = map(height/2+function, height/2-height/24, height/2+height/24, -1, 1);
-  cp5.getController("r_c").setValue(value);
-  cp5.getController("g_c").setValue(value);
-  cp5.getController("b_c").setValue(value);
+  sins.update();
+  //value = map(height/2+function, height/2-height/24, height/2+height/24, -1, 1);
+
+  if (change_a == true) {
+    cp5.getController("r_a").setValue(value1);
+    cp5.getController("g_a").setValue(value2);
+    cp5.getController("b_a").setValue(value3);
+  } else if (change_a == false) {
+    cp5.getController("r_a").setValue(r_a);
+    cp5.getController("g_a").setValue(g_a);
+    cp5.getController("b_a").setValue(b_a);
+  }
+
+  if (change_b == true) {
+    cp5.getController("r_b").setValue(value1);
+    cp5.getController("g_b").setValue(value2);
+    cp5.getController("b_b").setValue(value3);
+  }
+  if (change_b == false) {
+    cp5.getController("r_b").setValue(r_b);
+    cp5.getController("g_b").setValue(g_b);
+    cp5.getController("b_b").setValue(b_b);
+  }
+
+  if (change_c == true) {
+    cp5.getController("r_c").setValue(value1);
+    cp5.getController("g_c").setValue(value2);
+    cp5.getController("b_c").setValue(value3);
+  }
+  if (change_c == false) {
+    cp5.getController("r_c").setValue(r_c);
+    cp5.getController("g_c").setValue(g_c);
+    cp5.getController("b_c").setValue(b_c);
+  }
+
+  if (change_d == true) {
+    cp5.getController("r_d").setValue(value1);
+    cp5.getController("g_d").setValue(value2);
+    cp5.getController("b_d").setValue(value3);
+  }
+  if (change_d == false) {
+    cp5.getController("r_c").setValue(r_c);
+    cp5.getController("g_c").setValue(g_c);
+    cp5.getController("b_c").setValue(b_c);
+  }
 }
 
 public void SIN_OFF() {
@@ -158,14 +240,25 @@ public void SAW_ON() {
   wave2.update();
   value = map(function, -height/24, height/24, 0, 2); 
   value = (value%2)-1;
-  cp5.getController("r_c").setValue(value);
-  cp5.getController("g_c").setValue(value);
-  cp5.getController("b_c").setValue(value);
 }
 
 public void SAW_OFF() {
   toggle2 = false;
 }
+
+public void _A() {
+  _a = _a + 1;
+}
+public void _B() {
+  _b = _b + 1;
+}
+public void _C() {
+  _c = _c + 1;
+}
+public void _D() {
+  _d = _d + 1;
+}
+
 
 //BUTTON FUNCTIONS
 public void RED() {
