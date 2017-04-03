@@ -8,11 +8,7 @@ void createButtons() {
     .setBackgroundHeight(height/2)
     .setWidth(160)
     .setColorBackground(color(255))
-
     ;
-
-
-  ;
 
   // Secondly, we will write a label on screen to notify the user what 
   // the sliders control.
@@ -92,32 +88,15 @@ void createButtons() {
     .setGroup(buttons);
   ;
 
-  cp5.addToggle("SIN_ON")
+  cp5.addToggle("SIN")
     .setPosition(0, 250)
     .setColorBackground(color(100))
     .setSize(width/48, height/48)
     .setFont(createFont(font, font_size))
     .setGroup(buttons);
   ;
-
-  cp5.addToggle("SIN_OFF")
+  cp5.addToggle("SAW")
     .setPosition(100, 250)
-    .setColorBackground(color(100))
-    .setSize(width/48, height/48)
-    .setFont(createFont(font, font_size))
-    .setGroup(buttons);
-  ;
-
-  cp5.addToggle("SAW_ON")
-    .setPosition(0, 310)
-    .setColorBackground(color(100))
-    .setSize(width/48, height/48)
-    .setFont(createFont(font, font_size))
-    .setGroup(buttons);
-  ;
-
-  cp5.addToggle("SAW_OFF")
-    .setPosition(100, 310)
     .setColorBackground(color(100))
     .setSize(width/48, height/48)
     .setFont(createFont(font, font_size))
@@ -163,6 +142,13 @@ void change() {
   if (_b > 1) _b = 0;
   if (_c > 1) _c = 0;
   if (_d > 1) _d = 0;
+  if (_sin > 1) _sin = 0;
+  if (_saw > 1) _sin = 0;
+
+  if (_sin == 0) change_sin = false;
+  if (_sin == 1) change_sin = true;
+  if (_saw == 0) change_saw = false;
+  if (_saw == 1) change_saw = true;
   if (_a == 0) change_a = false;
   if (_a == 1) change_a = true;
   if (_b == 0) change_b = false;
@@ -173,79 +159,125 @@ void change() {
   if (_d == 1) change_d = true;
 }
 
-public void SIN_ON() {
+void sinABCD () {
   change();
+  if (change_sin == true) {
+    println(_sin);
 
-  println(str(change_a) + "____" + str(change_b) + "____" + str(_c) + "____" + str(_d)); 
-  toggle = true;//oscillator 1 class
-  SinWave sins = new SinWave(12*width/24, height/2, height/24, 1);
-  counter = counter + 0.1;
-  sins.update();
-  //value = map(height/2+function, height/2-height/24, height/2+height/24, -1, 1);
+    SinWave sins = new SinWave(12*width/24, height/2, height/24, 1);
+    counter = counter + 0.1;
+    sins.update();
+    //value = map(height/2+function, height/2-height/24, height/2+height/24, -1, 1);
 
-  if (change_a == true) {
-    cp5.getController("r_a").setValue(value1);
-    cp5.getController("g_a").setValue(value2);
-    cp5.getController("b_a").setValue(value3);
-  } else if (change_a == false) {
-    cp5.getController("r_a").setValue(r_a);
-    cp5.getController("g_a").setValue(g_a);
-    cp5.getController("b_a").setValue(b_a);
-  }
+    if (change_a == true) {
+      cp5.getController("r_a").setValue(value1);
+      cp5.getController("g_a").setValue(value2);
+      cp5.getController("b_a").setValue(value3);
+    } else if (change_a == false) {
+      cp5.getController("r_a").setValue(r_a);
+      cp5.getController("g_a").setValue(g_a);
+      cp5.getController("b_a").setValue(b_a);
+    }
 
-  if (change_b == true) {
-    cp5.getController("r_b").setValue(value1);
-    cp5.getController("g_b").setValue(value2);
-    cp5.getController("b_b").setValue(value3);
-  }
-  if (change_b == false) {
-    cp5.getController("r_b").setValue(r_b);
-    cp5.getController("g_b").setValue(g_b);
-    cp5.getController("b_b").setValue(b_b);
-  }
+    if (change_b == true) {
+      cp5.getController("r_b").setValue(value1);
+      cp5.getController("g_b").setValue(value2);
+      cp5.getController("b_b").setValue(value3);
+    }
+    if (change_b == false) {
+      cp5.getController("r_b").setValue(r_b);
+      cp5.getController("g_b").setValue(g_b);
+      cp5.getController("b_b").setValue(b_b);
+    }
 
-  if (change_c == true) {
-    cp5.getController("r_c").setValue(value1);
-    cp5.getController("g_c").setValue(value2);
-    cp5.getController("b_c").setValue(value3);
-  }
-  if (change_c == false) {
-    cp5.getController("r_c").setValue(r_c);
-    cp5.getController("g_c").setValue(g_c);
-    cp5.getController("b_c").setValue(b_c);
-  }
+    if (change_c == true) {
+      cp5.getController("r_c").setValue(value1);
+      cp5.getController("g_c").setValue(value2);
+      cp5.getController("b_c").setValue(value3);
+    }
+    if (change_c == false) {
+      cp5.getController("r_c").setValue(r_c);
+      cp5.getController("g_c").setValue(g_c);
+      cp5.getController("b_c").setValue(b_c);
+    }
 
-  if (change_d == true) {
-    cp5.getController("r_d").setValue(value1);
-    cp5.getController("g_d").setValue(value2);
-    cp5.getController("b_d").setValue(value3);
-  }
-  if (change_d == false) {
-    cp5.getController("r_c").setValue(r_c);
-    cp5.getController("g_c").setValue(g_c);
-    cp5.getController("b_c").setValue(b_c);
-  }
+    if (change_d == true) {
+      cp5.getController("r_d").setValue(value1);
+      cp5.getController("g_d").setValue(value2);
+      cp5.getController("b_d").setValue(value3);
+    }
+    if (change_d == false) {
+      cp5.getController("r_c").setValue(r_c);
+      cp5.getController("g_c").setValue(g_c);
+      cp5.getController("b_c").setValue(b_c);
+    }
+    }
+    if (change_sin == false) sins.clear();
 }
 
-public void SIN_OFF() {
-  toggle = false;
+//void sawABCD(){
+//   change();
+//  if (change_saw == true) {
+//    println(_saw);
+
+//    sawWave saws = new sawWave(12*width/24, height/2, height/24, 1);
+//    counter = counter + 0.1;
+//    saws.update();
+//    //value = map(height/2+function, height/2-height/24, height/2+height/24, -1, 1);
+
+//    if (change_a == true) {
+//      cp5.getController("r_a").setValue(value1);
+//      cp5.getController("g_a").setValue(value2);
+//      cp5.getController("b_a").setValue(value3);
+//    } else if (change_a == false) {
+//      cp5.getController("r_a").setValue(r_a);
+//      cp5.getController("g_a").setValue(g_a);
+//      cp5.getController("b_a").setValue(b_a);
+//    }
+
+//    if (change_b == true) {
+//      cp5.getController("r_b").setValue(value1);
+//      cp5.getController("g_b").setValue(value2);
+//      cp5.getController("b_b").setValue(value3);
+//    }
+//    if (change_b == false) {
+//      cp5.getController("r_b").setValue(r_b);
+//      cp5.getController("g_b").setValue(g_b);
+//      cp5.getController("b_b").setValue(b_b);
+//    }
+
+//    if (change_c == true) {
+//      cp5.getController("r_c").setValue(value1);
+//      cp5.getController("g_c").setValue(value2);
+//      cp5.getController("b_c").setValue(value3);
+//    }
+//    if (change_c == false) {
+//      cp5.getController("r_c").setValue(r_c);
+//      cp5.getController("g_c").setValue(g_c);
+//      cp5.getController("b_c").setValue(b_c);
+//    }
+
+//    if (change_d == true) {
+//      cp5.getController("r_d").setValue(value1);
+//      cp5.getController("g_d").setValue(value2);
+//      cp5.getController("b_d").setValue(value3);
+//    }
+//    if (change_d == false) {
+//      cp5.getController("r_c").setValue(r_c);
+//      cp5.getController("g_c").setValue(g_c);
+//      cp5.getController("b_c").setValue(b_c);
+//    }
+//    }
+//    if (change_saw == false) saws.clear();
+ 
+//}
+
+public void SIN() {
+  _sin = _sin + 1;
 }
-
-public void SAW_ON() {
-
-  toggle2 = true;//oscillator 1 class
-
-  Osc2 wave2 = new Osc2(7*width/24, height/2, height/24, 20);
-  counter = counter + 0.1;
-  wave2.update();
-  value = map(function, -height/24, height/24, 0, 2); 
-  value = (value%2)-1;
+public void SAW() {
+  _saw = _saw + 1;
 }
-
-public void SAW_OFF() {
-  toggle2 = false;
-}
-
 public void _A() {
   _a = _a + 1;
 }

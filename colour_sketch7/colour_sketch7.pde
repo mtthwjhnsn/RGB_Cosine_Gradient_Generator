@@ -7,9 +7,9 @@ float function; // oscillator1 class
 
 float counter;
 
-boolean toggle, toggle2;
+int _sin, _saw;
 
-boolean  change_a, change_b, change_c, change_d;
+boolean  change_a, change_b, change_c, change_d, change_sin, change_saw;
 
 int _a, _b, _c, _d, reset_a, reset_b, reset_c, reset_d;
 
@@ -38,9 +38,9 @@ void setup () {
   cp5 = new ControlP5(this);
 
   counter = 0;
-  toggle = false;
-  toggle2 = false;
 
+  _sin = 0;
+  _saw = 0;
   _a = 0;
   _b = 0;
   _c = 0;
@@ -85,6 +85,7 @@ void setup () {
   createSliders();
   createDropDownList();
   createButtons();
+  createKnobs();
 }
 
 //UPDATE////////////////////////////////////////////////////////////////////
@@ -112,14 +113,8 @@ void update () {
 void draw () {
   image(myImg, 0, 0, width, height);
   update();
+  sinABCD();
 
-  if (toggle == true) {
-    SIN_ON();
-    toggle2 = false;
-  } else if (toggle2 == true) {
-    SAW_ON();
-    toggle = false;
-  }
 
   // VECTOR ANNOTATION
   mtthwjhnsn = createFont("Ashbury", 30, true);
@@ -128,11 +123,3 @@ void draw () {
   textAlign(CENTER, CENTER);
   //text("[" + str(r_a) + ", " + str(r_b) + ", " + str(r_c) + ", " + str(r_d) + "] [" + str(g_a) + ", " + str(g_b) + ", " + str(g_c) + ", " + str(g_d) + "] [" + str(b_a) + ", " + str(b_b) + ", " + str(b_c) + ", " + str(b_d) + "]", width/2, height/2);
 }
-
-//void mousePressed() {
-//  if (toggle == true) {
-//    sins.add(new SinWave(2*width/24, height/2, height/24, 1));
-//  } else {
-//    sins.clear();
-//  }
-//}
