@@ -8,13 +8,10 @@ void sinABCD () {
   if (_c > 1) _c = 0;
   if (_d > 1) _d = 0;
   if (_sin > 1) _sin = 0;
-  if (_saw > 1) _saw = 0;
-  if (_r > 1) _c = 0;
+  if (_r > 1) _r = 0;
 
   if (_sin == 0) change_sin = false;
   if (_sin == 1) change_sin = true;
-  if (_saw == 0) change_saw = false;
-  if (_saw == 1) change_saw = true;
   if (_a == 0) change_a = false;
   if (_a == 1) change_a = true;
   if (_b == 0) change_b = false;
@@ -23,8 +20,8 @@ void sinABCD () {
   if (_c == 1) change_c = true;
   if (_d == 0) change_d = false;
   if (_d == 1) change_d = true;
-  if (_r == 0) change_d = false;
-  if (_r == 1) change_d = true;
+  if (_r == 0) change_r = false;
+  if (_r == 1) change_r = true;
   
   if (change_sin == true) {
     println(_sin);
@@ -102,5 +99,22 @@ void sinABCD () {
       r_d = random(-1, 1);
       g_d = random(-1, 1);
       b_d = random(-1, 1);
+    }
+        if (change_r == false) {
+      r_a = r_a;
+      g_a = g_a;
+      b_a = b_a;  
+
+      r_b = r_b;
+      g_b = g_b;
+      b_b = b_b;
+
+      r_c = r_c;
+      g_c = g_c;
+      b_c = b_c;
+
+      r_d = r_d;
+      g_d = g_d;
+      b_d = b_d;
     }
   }
