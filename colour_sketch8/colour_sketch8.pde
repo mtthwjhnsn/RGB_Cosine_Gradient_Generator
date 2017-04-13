@@ -103,38 +103,37 @@ void updateShaders() {
   shaderToy.set("amp", r_b, g_b, b_b); // amplitude
   shaderToy.set("freq", r_c, g_c, b_c); // frequency
   shaderToy.set("phase", r_d, g_d, b_d); // phase
-  shaderToy.set("num_bands", 10.0); // number of bands
-  shaderToy.set("animate_speed", 2.0); // speed
+  shaderToy.set("num_bands", 4.0); // number of bands
+  shaderToy.set("animate_speed", 0.1); // speed
   
   shader(shaderToy); 
-  rect(0, 0, width, height/4); // We draw a rect here for our shader to draw onto
+  rect(0, 0, width, height); // We draw a rect here for our shader to draw onto
 }
 
-void update () {
+//void update () {
 
-  surface.setTitle(str(frameRate));
-  //t = t + 10;
-  x = 0.001;
+//  surface.setTitle(str(frameRate));
+//  //t = t + 10;
+//  x = 0.001;
 
-  for (int i = 0; i < width; i++) {
+//  for (int i = 0; i < width; i++) {
 
-    float red = (r_a + r_b*cos( 6.28318*(r_c*(i*x)+r_d))) * 255;
-    float green = (g_a + g_b*cos( 6.28318*(g_c*(i*x)+g_d))) * 255;
-    float blue = (b_a + b_b*cos( 6.28318*(b_c*(i*x)+b_d))) * 255;
+//    float red = (r_a + r_b*cos( 6.28318*(r_c*(i*x)+r_d))) * 255;
+//    float green = (g_a + g_b*cos( 6.28318*(g_c*(i*x)+g_d))) * 255;
+//    float blue = (b_a + b_b*cos( 6.28318*(b_c*(i*x)+b_d))) * 255;
 
-    fill(red, green, blue);
-    noStroke();
-    rect(i, height/12, 1, height/3);
-  }
-}
+//    fill(red, green, blue);
+//    noStroke();
+//    rect(i, height/12, 1, height/3);
+//  }
+//}
 
 //DRAW/////////////////////////////////////////////////////////////////////
 
 void draw () {
   
   surface.setTitle(str(frameRate));
-  
-  image(myImg, 0, 0, width, height);
+  //image(myImg, 0, 0, width, height);
   updateShaders();
   sinABCD();
 
