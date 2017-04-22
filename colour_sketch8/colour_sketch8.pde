@@ -19,6 +19,9 @@ float value, value1, value2, value3;
 
 float  r_a, r_b, r_c, r_d, g_a, g_b, g_c, g_d, b_a, b_b, b_c, b_d;
 
+int bands, amp_lfo_type, freq_lfo_type, phase_lfo_type;
+
+float speed, amp_lfo_speed, freq_lfo_speed, phase_lfo_speed, amp_lfo_amp, freq_lfo_amp, phase_lfo_amp, amp_cycle_speed, freq_cycle_speed, phase_cycle_speed;
 float x;
 
 PFont mtthwjhnsn;
@@ -84,6 +87,8 @@ void setup () {
   b_b = 0.5; 
   b_c = 0.25; 
   b_d = 0.5;
+  
+  amp_lfo_speed = 0.92;
 
   myImg = loadImage("vhs2.jpg");
 
@@ -96,15 +101,29 @@ void setup () {
 //UPDATE////////////////////////////////////////////////////////////////////
 void updateShaders() {
   
-  
-  
   shaderToy.set("iGlobalTime", millis() / 1000.0); // pass in a millisecond clock to enable animation 
   shaderToy.set("dc", r_a, g_a, b_a); // dc
   shaderToy.set("amp", r_b, g_b, b_b); // amplitude
   shaderToy.set("freq", r_c, g_c, b_c); // frequency
   shaderToy.set("phase", r_d, g_d, b_d); // phase
-  shaderToy.set("num_bands", 4.0); // number of bands
-  shaderToy.set("animate_speed", 0.1); // speed
+  shaderToy.set("num_bands", float(bands)); // number of bands
+  shaderToy.set("animate_speed", speed); // speed
+
+  shaderToy.set("amp_lfo_type", amp_lfo_type); // phase
+  shaderToy.set("freq_lfo_type", freq_lfo_type); // number of bands
+  shaderToy.set("phase_lfo_type", phase_lfo_type); // speed
+  
+  shaderToy.set("amp_lfo_speed", amp_lfo_speed); // phase
+  shaderToy.set("freq_lfo_speed", freq_lfo_speed); // number of bands
+  shaderToy.set("phase_lfo_speed", phase_lfo_speed); // speed
+  
+  shaderToy.set("amp_lfo_amp", amp_lfo_amp); // phase
+  shaderToy.set("freq_lfo_amp", freq_lfo_amp); // number of bands
+  shaderToy.set("phase_lfo_amp", phase_lfo_amp); // speed
+  
+    shaderToy.set("amp_cycle_speed", amp_cycle_speed); // phase
+  shaderToy.set("freq_cycle_speed", freq_cycle_speed); // number of bands
+  shaderToy.set("phase_cycle_speed", phase_cycle_speed); // speed
   
   shader(shaderToy); 
   rect(0, 0, width, height); // We draw a rect here for our shader to draw onto
@@ -133,10 +152,9 @@ void updateShaders() {
 void draw () {
   
   surface.setTitle(str(frameRate));
-  //image(myImg, 0, 0, width, height);
-  updateShaders();
+//  image(myImg, 0, 0, width, height);
   sinABCD();
-
+  updateShaders();
 
   // VECTOR ANNOTATION
   mtthwjhnsn = createFont("Ashbury", 30, true);

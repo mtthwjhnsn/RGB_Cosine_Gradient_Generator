@@ -14,12 +14,12 @@ void createSliders() {
   // Firstly, we create a group that out sliders will bind to. 
   Group sliders = cp5.addGroup("sliders")
 
-    .setPosition(width/4, height/12*9)
+    .setPosition(width/4, height/12)
     .setBackgroundHeight(0)
     //.setFont(createFont(font, font_size))
-    //.setHeight(40)
-    .setWidth(0)
-    //.setBackgroundColor(color(0))
+    .setHeight(sl_height_2*20)
+    .setWidth(width/8*3)
+    .setBackgroundColor(color(255))
     ;
   Textlabel SliderLabel;
 
@@ -71,7 +71,180 @@ void createSliders() {
     .setFont(createFont(font, font_size))
     .setGroup(sliders);
   ;
+  
+    cp5.addSlider("bands")
+    .setSize(sl_width_b2, sl_height_2)
+    .setPosition(sl_width_a, sl_height_3+sl_height_2)
+    .setRange(1, 100)
+    .setValue(bands)
+    .setColorValue(color(255))
+    .setColorForeground(color(80))
+    .setColorBackground(color(0, 0, 255, 30))
+    .setFont(createFont(font, font_size))
+    .setGroup(sliders);
+  ;
+  
+      cp5.addSlider("speed")
+    .setSize(sl_width_b2, sl_height_2)
+    .setPosition(sl_width_a, sl_height_3+sl_height_3)
+    .setRange(0.0, 5.0)
+    .setValue(speed)
+    .setColorValue(color(255))
+    .setColorForeground(color(80))
+    .setColorBackground(color(0, 0, 255, 30))
+    .setFont(createFont(font, font_size))
+    .setGroup(sliders);
+  ;
+  
+//lfo type-----------------------------------------------------------
+      cp5.addSlider("amp_lfo_type")
+    .setSize(sl_width_b2, sl_height_2)
+    .setPosition(sl_width_a, sl_height_2*7)
+    .setRange(0, 4)
+    .setValue(amp_lfo_type)
+    .setColorValue(color(255))
+    .setColorForeground(color(80))
+    .setColorBackground(color(0, 0, 255, 30))
+    .setFont(createFont(font, font_size))
+    .setGroup(sliders);
+  ;
+        cp5.addSlider("freq_lfo_type")
+    .setSize(sl_width_b2, sl_height_2)
+    .setPosition(sl_width_a, sl_height_2*8)
+    .setRange(0, 4)
+    .setValue(freq_lfo_type)
+    .setColorValue(color(255))
+    .setColorForeground(color(80))
+    .setColorBackground(color(0, 0, 255, 30))
+    .setFont(createFont(font, font_size))
+    .setGroup(sliders);
+  ;
+      cp5.addSlider("phase_lfo_type")
+    .setSize(sl_width_b2, sl_height_2)
+    .setPosition(sl_width_a, sl_height_2*9)
+    .setRange(0, 4)
+    .setValue(phase_lfo_type)
+    .setColorValue(color(255))
+    .setColorForeground(color(80))
+    .setColorBackground(color(0, 0, 255, 30))
+    .setFont(createFont(font, font_size))
+    .setGroup(sliders);
+  ;
+  
+//lfo speed-----------------------------------------------------------
+  
+          cp5.addSlider("amp_lfo_speed")
+    .setSize(sl_width_b2, sl_height_2)
+    .setPosition(sl_width_b, sl_height_2*7)
+    .setRange(0, 4)
+    .setValue(amp_lfo_speed)
+    .setColorValue(color(255))
+    .setColorForeground(color(80))
+    .setColorBackground(color(0, 0, 255, 30))
+    .setFont(createFont(font, font_size))
+    .setGroup(sliders);
+  ;
+  
+      cp5.addSlider("freq_lfo_speed")
+    .setSize(sl_width_b2, sl_height_2)
+    .setPosition(sl_width_b, sl_height_2*8)
+    .setRange(0, 4)
+    .setValue(freq_lfo_speed)
+    .setColorValue(color(255))
+    .setColorForeground(color(80))
+    .setColorBackground(color(0, 0, 255, 30))
+    .setFont(createFont(font, font_size))
+    .setGroup(sliders);
+  ;
+  
+        cp5.addSlider("phase_lfo_speed")
+    .setSize(sl_width_b2, sl_height_2)
+    .setPosition(sl_width_b, sl_height_2*9)
+    .setRange(0, 4)
+    .setValue(phase_lfo_speed)
+    .setColorValue(color(255))
+    .setColorForeground(color(80))
+    .setColorBackground(color(0, 0, 255, 30))
+    .setFont(createFont(font, font_size))
+    .setGroup(sliders);
+  ;
 
+//amps-----------------------------------------------------------
+
+        cp5.addSlider("amp_lfo_amp")
+    .setSize(sl_width_b2, sl_height_2)
+    .setPosition(sl_width_c, sl_height_2*7)
+    .setRange(0, 4)
+    .setValue(amp_lfo_amp)
+    .setColorValue(color(255))
+    .setColorForeground(color(80))
+    .setColorBackground(color(0, 0, 255, 30))
+    .setFont(createFont(font, font_size))
+    .setGroup(sliders);
+  ;
+  
+          cp5.addSlider("freq_lfo_amp")
+    .setSize(sl_width_b2, sl_height_2)
+    .setPosition(sl_width_c, sl_height_2*8)
+    .setRange(0, 4)
+    .setValue(freq_lfo_amp)
+    .setColorValue(color(255))
+    .setColorForeground(color(80))
+    .setColorBackground(color(0, 0, 255, 30))
+    .setFont(createFont(font, font_size))
+    .setGroup(sliders);
+  ;
+  
+        cp5.addSlider("phase_lfo_amp")
+    .setSize(sl_width_b2, sl_height_2)
+    .setPosition(sl_width_c, sl_height_2*9)
+    .setRange(0, 4)
+    .setValue(phase_lfo_amp)
+    .setColorValue(color(255))
+    .setColorForeground(color(80))
+    .setColorBackground(color(0, 0, 255, 30))
+    .setFont(createFont(font, font_size))
+    .setGroup(sliders);
+  ;
+  
+  //speeds-----------------------------------------------------------
+          cp5.addSlider("amp_cycle_speed")
+    .setSize(sl_width_b2, sl_height_2)
+    .setPosition(sl_width_d, sl_height_2*7)
+    .setRange(0, 4)
+    .setValue(amp_cycle_speed)
+    .setColorValue(color(255))
+    .setColorForeground(color(80))
+    .setColorBackground(color(0, 0, 255, 30))
+    .setFont(createFont(font, font_size))
+    .setGroup(sliders);
+  ;
+  
+        cp5.addSlider("freq_cycle_speed")
+    .setSize(sl_width_b2, sl_height_2)
+    .setPosition(sl_width_d, sl_height_2*8)
+    .setRange(0, 4)
+    .setValue(freq_cycle_speed)
+    .setColorValue(color(255))
+    .setColorForeground(color(80))
+    .setColorBackground(color(0, 0, 255, 30))
+    .setFont(createFont(font, font_size))
+    .setGroup(sliders);
+  ;
+  
+        cp5.addSlider("phase_cycle_speed")
+    .setSize(sl_width_b2, sl_height_2)
+    .setPosition(sl_width_d, sl_height_2*9)
+    .setRange(0, 4)
+    .setValue(phase_cycle_speed)
+    .setColorValue(color(255))
+    .setColorForeground(color(80))
+    .setColorBackground(color(0, 0, 255, 30))
+    .setFont(createFont(font, font_size))
+    .setGroup(sliders);
+  ;
+  
+  
   /////////////11111/////////////
   cp5.addSlider("r_b")
     .setSize(sl_width_b2, sl_height_2)
