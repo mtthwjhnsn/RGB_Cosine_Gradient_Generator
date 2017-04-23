@@ -5,7 +5,7 @@ void createButtons() {
   // Firstly, we create a group that out buttons will bind to. 
   Group buttons = cp5.addGroup("buttons")
     .setPosition(width/14 * 11, height/2 + height/8)
-    .setBackgroundHeight(height/2)
+    .setBackgroundHeight(0)
     .setWidth(160)
     .setColorBackground(color(255))
     ;
@@ -88,52 +88,53 @@ void createButtons() {
     .setGroup(buttons);
   ;
 
-  cp5.addToggle("SIN")
-    .setPosition(0, 250)
-    .setColorBackground(color(100))
-    .setSize(width/48, height/48)
-    .setFont(createFont(font, font_size))
-    .setGroup(buttons);
-  ;
-  cp5.addToggle("SAW")
-    .setPosition(100, 250)
-    .setColorBackground(color(100))
-    .setSize(width/48, height/48)
-    .setFont(createFont(font, font_size))
-    .setGroup(buttons);
-  ;
+  //cp5.addToggle("SIN")
+  //  .setPosition(0, 250)
+  //  .setColorBackground(color(100))
+  //  .setSize(width/48, height/48)
+  //  .setFont(createFont(font, font_size))
+  //  .setGroup(buttons);
+  //;
+  //cp5.addToggle("SAW")
+  //  .setPosition(100, 250)
+  //  .setColorBackground(color(100))
+  //  .setSize(width/48, height/48)
+  //  .setFont(createFont(font, font_size))
+  //  .setGroup(buttons);
+  //;
 
-  cp5.addToggle("_A")
-    .setPosition(150+width/48, 250)
-    .setColorBackground(color(100))
-    .setSize(width/48, height/48)
-    .setFont(createFont(font, font_size))
-    .setGroup(buttons);
-  ;
+//  cp5.addToggle("_A")
+//    .setPosition(150+width/48, 250)
+//    .setColorBackground(color(100))
+//    .setSize(width/48, height/48)
+//    .setFont(createFont(font, font_size))
+//    .setGroup(buttons);
+//  ;
 
-  cp5.addToggle("_B")
-    .setPosition(160+2*width/48, 250)
-    .setColorBackground(color(100))
-    .setSize(width/48, height/48)
-    .setFont(createFont(font, font_size))
-    .setGroup(buttons);
-  ;
+//  cp5.addToggle("_B")
+//    .setPosition(160+2*width/48, 250)
+//    .setColorBackground(color(100))
+//    .setSize(width/48, height/48)
+//    .setFont(createFont(font, font_size))
+//    .setGroup(buttons);
+//  ;
 
-  cp5.addToggle("_C")
-    .setPosition(170+3*width/48, 250)
-    .setColorBackground(color(100))
-    .setSize(width/48, height/48)
-    .setFont(createFont(font, font_size))
-    .setGroup(buttons);
-  ;
+//  cp5.addToggle("_C")
+//    .setPosition(170+3*width/48, 250)
+//    .setColorBackground(color(100))
+//    .setSize(width/48, height/48)
+//    .setFont(createFont(font, font_size))
+//    .setGroup(buttons);
+//  ;
 
-  cp5.addToggle("_D")
-    .setPosition(180+4*width/48, 250)
-    .setColorBackground(color(100))
-    .setSize(width/48, height/48)
-    .setFont(createFont(font, font_size))
-    .setGroup(buttons);
-  ;
+//  cp5.addToggle("_D")
+//    .setPosition(180+4*width/48, 250)
+//    .setColorBackground(color(100))
+//    .setSize(width/48, height/48)
+//    .setFont(createFont(font, font_size))
+//    .setGroup(buttons);
+//  ;
+
 }
 
 void change() {
@@ -164,9 +165,9 @@ void sinABCD () {
   if (change_sin == true) {
     println(_sin);
 
-    SinWave sins = new SinWave(12*width/24, height/2, height/24, 1);
-    counter = counter + 0.1;
-    sins.update();
+    //SinWave sins = new SinWave(12*width/24, height/2, height/24, 1);
+    //counter = counter + 0.1;
+    //sins.update();
     //value = map(height/2+function, height/2-height/24, height/2+height/24, -1, 1);
 
     if (change_a == true) {
@@ -212,7 +213,7 @@ void sinABCD () {
       cp5.getController("b_c").setValue(b_c);
     }
     }
-    if (change_sin == false) sins.clear();
+    //if (change_sin == false) sins.clear();
 }
 
 //void sawABCD(){

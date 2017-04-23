@@ -2,8 +2,8 @@ void createSliders() {
   int font_size = 18;
 
   int sl_height_1 = 0;
-  int sl_height_2 = height/24;
-  int sl_height_3 = 2*height/24;
+  int sl_height_2 = height/36;
+  int sl_height_3 = 2*height/36;
 
   int sl_width_a = 0;
   int sl_width_b = width/8;
@@ -14,10 +14,10 @@ void createSliders() {
   // Firstly, we create a group that out sliders will bind to. 
   Group sliders = cp5.addGroup("sliders")
 
-    .setPosition(width/4, height/12)
+    .setPosition(width/4, 8*height/12)
     .setBackgroundHeight(0)
     //.setFont(createFont(font, font_size))
-    .setHeight(sl_height_2*20)
+    //.setHeight(sl_height_2)
     .setWidth(width/8*3)
     .setBackgroundColor(color(255))
     ;
@@ -43,7 +43,7 @@ void createSliders() {
     .setValue(r_a)
     .setColorValue(color(255))
     .setColorForeground(color(80))
-    .setColorBackground(color(255, 0, 0, 30))
+    .setColorBackground(color(255, 0, 0))
     .setColorValue(color(255))
     .setFont(createFont(font, font_size))
     .setGroup(sliders);

@@ -1,4 +1,4 @@
-#define PROCESSING_COLOR_SHADER
+#define PROCESSING_TEXTURE_SHADER
 uniform float iGlobalTime;
 uniform float num_bands;
 uniform float animate_speed;

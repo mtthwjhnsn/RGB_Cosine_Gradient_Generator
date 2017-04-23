@@ -1,3 +1,4 @@
+/*
 class SinWave {
 
   int h;
@@ -50,3 +51,4 @@ class SinWave {
     }
   }
 }
+*/

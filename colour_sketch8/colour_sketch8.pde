@@ -1,9 +1,14 @@
 import controlP5.*;
 ControlP5 cp5;
 
-PShader shaderToy;
+PShader passThroughShader;
+PShader shaderColor;
+PShader shaderTexture;
+PGraphics passThroughFBO;
+PGraphics shaderColorFBO;
+PGraphics shaderTextureFBO;
 
-ArrayList<SinWave> sins = new ArrayList<SinWave>();
+//ArrayList<SinWave> sins = new ArrayList<SinWave>();
 
 float function; // oscillator1 class
 
@@ -32,19 +37,37 @@ PImage myImg;
 
 XML xml;
 
+int shaderWidth, shaderHeight; 
+
 
 //SETUP/////////////////////////////////////////////////////////////////////
 
 void setup () {
 
+  //fullScreen();
   size (1920, 1080, P2D);
   background(0);
 
   cp5 = new ControlP5(this);
-
-  shaderToy = loadShader("colourPanels.glsl"); // Load our .glsl shader from the /data folder
-  shaderToy.set("iResolution", float(width), float(height), 0); // Pass in our xy resolution to iResolution uniform variable in our shader
-
+  
+  shaderWidth = width;
+  shaderHeight = height;
+    
+  passThroughShader = loadShader("passThrough.glsl"); // Load our .glsl shader from the /data folder
+  passThroughShader.set("iResolution", float(shaderWidth), float(shaderHeight), 0); // Pass in our xy resolution to iResolution uniform variable in our shader
+  passThroughFBO = createGraphics(shaderWidth, shaderHeight, P2D);
+  passThroughFBO.shader(passThroughShader);
+  
+  shaderColor = loadShader("colourPanels.glsl"); // Load our .glsl shader from the /data folder
+  shaderColor.set("iResolution", float(shaderWidth), float(shaderHeight), 0); // Pass in our xy resolution to iResolution uniform variable in our shader
+  shaderColorFBO = createGraphics(shaderWidth, shaderHeight, P2D); 
+  shaderColorFBO.shader(shaderColor);
+  
+  shaderTexture = loadShader("colourPanelsTex.glsl"); // Load our .glsl shader from the /data folder
+  shaderTexture.set("iResolution", float(shaderWidth), float(shaderHeight), 0); // Pass in our xy resolution to iResolution uniform variable in our shader
+  shaderTextureFBO = createGraphics(shaderWidth, shaderHeight, P2D); 
+  shaderTextureFBO.shader(shaderTexture);
+  
   counter = 0;
 
   _sin = 0;
@@ -101,32 +124,32 @@ void setup () {
 //UPDATE////////////////////////////////////////////////////////////////////
 void updateShaders() {
   
-  shaderToy.set("iGlobalTime", millis() / 1000.0); // pass in a millisecond clock to enable animation 
-  shaderToy.set("dc", r_a, g_a, b_a); // dc
-  shaderToy.set("amp", r_b, g_b, b_b); // amplitude
-  shaderToy.set("freq", r_c, g_c, b_c); // frequency
-  shaderToy.set("phase", r_d, g_d, b_d); // phase
-  shaderToy.set("num_bands", float(bands)); // number of bands
-  shaderToy.set("animate_speed", speed); // speed
+  shaderColor.set("iGlobalTime", millis() / 1000.0); // pass in a millisecond clock to enable animation 
+  shaderColor.set("dc", r_a, g_a, b_a); // dc
+  shaderColor.set("amp", r_b, g_b, b_b); // amplitude
+  shaderColor.set("freq", r_c, g_c, b_c); // frequency
+  shaderColor.set("phase", r_d, g_d, b_d); // phase
+  shaderColor.set("num_bands", float(bands)); // number of bands
+  shaderColor.set("animate_speed", speed); // speed
 
-  shaderToy.set("amp_lfo_type", amp_lfo_type); // phase
-  shaderToy.set("freq_lfo_type", freq_lfo_type); // number of bands
-  shaderToy.set("phase_lfo_type", phase_lfo_type); // speed
+  shaderColor.set("amp_lfo_type", amp_lfo_type); // phase
+  shaderColor.set("freq_lfo_type", freq_lfo_type); // number of bands
+  shaderColor.set("phase_lfo_type", phase_lfo_type); // speed
   
-  shaderToy.set("amp_lfo_speed", amp_lfo_speed); // phase
-  shaderToy.set("freq_lfo_speed", freq_lfo_speed); // number of bands
-  shaderToy.set("phase_lfo_speed", phase_lfo_speed); // speed
+  shaderColor.set("amp_lfo_speed", amp_lfo_speed); // phase
+  shaderColor.set("freq_lfo_speed", freq_lfo_speed); // number of bands
+  shaderColor.set("phase_lfo_speed", phase_lfo_speed); // speed
   
-  shaderToy.set("amp_lfo_amp", amp_lfo_amp); // phase
-  shaderToy.set("freq_lfo_amp", freq_lfo_amp); // number of bands
-  shaderToy.set("phase_lfo_amp", phase_lfo_amp); // speed
+  shaderColor.set("amp_lfo_amp", amp_lfo_amp); // phase
+  shaderColor.set("freq_lfo_amp", freq_lfo_amp); // number of bands
+  shaderColor.set("phase_lfo_amp", phase_lfo_amp); // speed
   
-    shaderToy.set("amp_cycle_speed", amp_cycle_speed); // phase
-  shaderToy.set("freq_cycle_speed", freq_cycle_speed); // number of bands
-  shaderToy.set("phase_cycle_speed", phase_cycle_speed); // speed
+  shaderColor.set("amp_cycle_speed", amp_cycle_speed); // phase
+  shaderColor.set("freq_cycle_speed", freq_cycle_speed); // number of bands
+  shaderColor.set("phase_cycle_speed", phase_cycle_speed); // speed
   
-  shader(shaderToy); 
-  rect(0, 0, width, height); // We draw a rect here for our shader to draw onto
+  //shader(shaderColor); 
+  //rect(0, 0, width, height); // We draw a rect here for our shader to draw onto
 }
 
 //void update () {
@@ -150,12 +173,38 @@ void updateShaders() {
 //DRAW/////////////////////////////////////////////////////////////////////
 
 void draw () {
-  
+  background(50);
   surface.setTitle(str(frameRate));
-//  image(myImg, 0, 0, width, height);
-  sinABCD();
+  //pushMatrix();
+  //image(myImg, 0, 0, width, height);
+  //sinABCD();
   updateShaders();
+  
+  //passThroughFBO.beginDraw();
+  //passThroughShader.set("iGlobalTime", millis() / 1000.0); // pass in a millisecond clock to enable animation 
+  //passThroughShader.set("tex", myImg);
+  //shader(passThroughShader); 
+  //passThroughFBO.rect(0, 0, shaderWidth, shaderHeight); // We draw a rect here for our shader to draw onto
+  //passThroughFBO.endDraw();
+  
+  shaderTextureFBO.beginDraw();
+  shaderTexture.set("iGlobalTime", millis() / 1000.0); // pass in a millisecond clock to enable animation 
+  //shaderTexture.set("tex", myImg);
+  shader(shaderTexture); 
+  shaderTextureFBO.rect(0, 0, shaderWidth, shaderHeight); // We draw a rect here for our shader to draw onto
+  shaderTextureFBO.endDraw();
+  
+  shaderColorFBO.beginDraw();
+  shaderColor.set("iGlobalTime", millis() / 1000.0); // pass in a millisecond clock to enable animation 
+  shaderColor.set("tex", shaderTextureFBO);
+  shader(shaderColor); 
+  shaderColorFBO.rect(0, 0, shaderWidth, shaderHeight); // We draw a rect here for our shader to draw onto
+  shaderColorFBO.endDraw();
 
+  image(shaderColorFBO, 0, 0, shaderWidth, shaderHeight);
+  
+  //image(myImg, 0, 0, width, height);
+  
   // VECTOR ANNOTATION
   mtthwjhnsn = createFont("Ashbury", 30, true);
   fill(#CFCFD3);

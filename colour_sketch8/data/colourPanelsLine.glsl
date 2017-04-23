@@ -1,4 +1,4 @@
-#define PROCESSING_COLOR_SHADER
+#define PROCESSING_LINE_SHADER
 uniform float iGlobalTime;
 uniform float num_bands;
 uniform float animate_speed;
@@ -77,7 +77,7 @@ void main(){
    float f = fract(p.y*num_bands);
 
    // borders
-   col *= smoothstep( 0.49, 0.47, abs(f-0.5) );
+   //col *= smoothstep( 0.49, 0.47, abs(f-0.5) );
 
    // shadowing
    col *= 0.5 + 0.5*sqrt(4.0*f*(1.0-f));
